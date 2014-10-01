@@ -26,6 +26,7 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>SecurityRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>..\..\..\Package\Release\ServiceManagement\Azure\HDInsight</OutputPath>
@@ -121,6 +122,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureHDInsightStringResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AzureHDInsightStringResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Cmdlet\AddAzureHDInsightConfigValuesCmdlet.cs" />
     <Compile Include="Cmdlet\AddAzureHDInsightMetastoreCmdlet.cs" />
     <Compile Include="Cmdlet\AddAzureHDInsightStorageCmdlet.cs" />
@@ -320,6 +326,12 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AzureHDInsightStringResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AzureHDInsightStringResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -24,7 +24,8 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCluste
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Logging;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
-
+using System.Resources;
+using Microsoft.WindowsAzure.Commands.HDInsight;
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
 {
     /// <summary>
@@ -115,8 +116,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             if (Subscription.IsNotNullOrEmpty())
             {
-                this.WriteWarning("The -Subscription parameter is deprecated, Please use Select-AzureSubscription -Current to select a subscription to use.");
-
+                this.WriteWarning(String.Format(CultureInfo.InvariantCulture, AzureHDInsightStringResource.HDInsightSubscriptionDeprecateWarning));
                 ProfileClient client = new ProfileClient();
 
                 var subscriptionResolver =
